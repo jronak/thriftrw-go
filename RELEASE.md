@@ -72,8 +72,18 @@ To release new versions of ThriftRW Go, follow these instructions.
 
 9.  Land the pull request after approval as a **merge commit**. To do this,
     select **Create a merge commit** from the pull-down next to the merge
-    button and click **Merge pull request**. Make sure you delete that branch
-    after it has been merged with **Delete Branch**.
+    button and click **Merge pull request**.
+
+    Please update the subject and body of the merge commit with a short
+    description of the changes to be merged into master.
+
+    Please note that the pull request title and comment are NOT the contents
+    of the merge commit subject and body. The merge commit message is set
+    by the form that appears after you click **Merge pull request** and before
+    you confirm the merge.
+
+    Make sure you delete that branch after it has been merged with
+    **Delete Branch**.
 
 10. Once the change has been landed, pull it locally.
 
@@ -90,6 +100,7 @@ To release new versions of ThriftRW Go, follow these instructions.
 13. Switch back to development.
 
         git checkout $BRANCH
+        git checkout -b "back-to-dev" dev
         git merge master
 
 14. Add a placeholder for the next version to CHANGELOG.md and a new link at
@@ -122,7 +133,17 @@ To release new versions of ThriftRW Go, follow these instructions.
 
         make generate
 
-18. Commit and push your changes.
+18. Commit and create a pull request.
 
         git commit -a -m 'Back to development'
-        git push origin $BRANCH
+        hub pull-request -b dev --push
+
+19. Merge this pull request once approved as a merge commit.
+
+    Please update the subject of the the merge commit as 'Back to
+    development (#PR)', message body contents are not required.
+
+    Please note that the pull request title and comment are NOT the contents
+    of the merge commit subject and body. The merge commit message is set
+    by the form that appears after you click **Merge pull request** and before
+    you confirm the merge.
